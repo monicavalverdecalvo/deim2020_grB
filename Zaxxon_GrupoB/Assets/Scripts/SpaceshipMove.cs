@@ -75,6 +75,45 @@ public class SpaceshipMove : MonoBehaviour
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * desplX);
         transform.Translate(Vector3.up * Time.deltaTime * moveSpeed * desplY);
 
-        
+
+   
+        //float myPosX = transform.position.x;
+        //float myPosY = transform.position.y;
+
+
+    // LIMITADOR NAVE IZQ DRC
+
+        if (transform.position.x <= -5.5f)
+        {
+            transform.position = new Vector3(-5.5f, transform.position.y);
+        }
+        else if (transform.position.x >= 5.5f)
+        {
+            transform.position = new Vector3(5.5f, transform.position.y);
+        }
+
+    // LIMITADOR ARRIBA - ABAJO
+
+        if (transform.position.y >= 4f)
+        {
+              transform.position = new Vector3(transform.position.x, 4f);
+        }
+        else if (transform.position.y <= 0.2f)
+        {
+                transform.position = new Vector3(transform.position.x, 0.2f);
+        }
+
+       // LIMITADOR Z
+
+        if (transform.position.z >= 4f)
+        {
+            transform.position = new Vector3(transform.position.z, 4f);
+        }
+        else if (transform.position.z = 0f)
+        {
+            transform.position = new Vector3)transform.position.z = 0f);
+        }
+
     }
-}
+    }
+

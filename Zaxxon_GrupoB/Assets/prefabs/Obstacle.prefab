@@ -55,11 +55,10 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2d81e0bd71e79784199dbdf6880a51e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,11 +148,10 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30d351457dfac9d40a8b07e6426fd177, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 4306565700072356419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 152.697, y: 74.07594, z: 121.05147}
-  m_LocalScale: {x: 1, y: 7.1956, z: 1}
+  m_LocalScale: {x: 1, y: 0.9786736, z: 1}
   m_Children:
   - {fileID: 7153060336069356630}
   - {fileID: 2961135713995137113}
@@ -230,7 +228,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4306565700072356419}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 6ed599d7224ee9943b11064add7ed981, type: 3}
 --- !u!23 &4694959043248899993
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -245,11 +243,10 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82c97815f01775d4899d78255a373dfe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,5 +293,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ceca0282428b2946aa4f9d9584c75ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
-  SpaceShip: {fileID: 0}
+  SpaceShip: {fileID: 4306565700072356419}

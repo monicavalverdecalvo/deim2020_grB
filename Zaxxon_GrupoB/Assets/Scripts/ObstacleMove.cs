@@ -5,17 +5,22 @@ using UnityEngine;
 public class ObstacleMove : MonoBehaviour
 {
 
-    //Creamos la variable a la que se moverá el obtáculo
+    //Creamos la variable a la que se moverá el obstáculo
     //Este valor deberá depender de la velocidad de la nave
     private float obstacleSpeed;
 
+    //Variables necesarias para acceder al script asociado a la nave
     public GameObject SpaceShip;
+
+    //Creamos una variable de tipo clase publica "SpaceshipMove"
     SpaceshipMove spaceshipMove;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Como desde el prefab no podemos arrastrar el GameObject, lo buscamos en la escena
         SpaceShip = GameObject.Find("Spaceship");
+        //Asociamos a la variable el componente d ela nave (es decir su script)
         spaceshipMove = SpaceShip.GetComponent<SpaceshipMove>();
     }
 
@@ -32,8 +37,11 @@ public class ObstacleMove : MonoBehaviour
         }
 
         //Asignamos una velocidad fija (de momento)
-        obstacleSpeed = 5f;
+        //obstacleSpeed = 5f;
+        //transform.Translate(Vector3.back * Time.deltaTime * obstacleSpeed);
+
+        //Asignamos la velocidad que nos da el script de la nave (spaceshipMove)
+        obstacleSpeed = spaceshipMove.speed;
         transform.Translate(Vector3.back * Time.deltaTime * obstacleSpeed);
- 
     }
 }

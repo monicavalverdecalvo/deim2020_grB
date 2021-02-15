@@ -9,52 +9,89 @@ public class ObstacleCreator : MonoBehaviour
     //Variable que contendré el prefab con el obstáculo
     [SerializeField] GameObject Columna;
 
+
     //Variable que tiene la posición del objeto de referencia
     [SerializeField] Transform InitPos;
 
     //Variables para generar columnas de forma random
     private float randomNumber;
-    Vector3 RandomPos;
+    Vector3 RandomPosX;
+    Vector3 RandomPosY;
 
     //Distacia a la que se crean las columnas iniciales
-    [SerializeField] float distaciaInicial = 5;
+    //[SerializeField] float distaciaInicial = 5;
+
+    //Distancia entre columnas
+    float distanciaSep = 9f;
+
+
+    //Acceder a los componentes de la nave
+    public GameObject Nave;
+    private SpaceshipMove spaceshipMove;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        //Acedo al script de la nave
+        spaceshipMove = Nave.GetComponent<SpaceshipMove>();
+        
+       
         //Crear columnas iniciales
-
-        for(int n = 1; n <= 30;n++)
+        for(int n = 1; n <= 10;n++)
         {
 
-            CrearColumna(n * distaciaInicial);
+            //CrearColumna(n * distaciaInicial);
+            //Creamos cada columna con la separacion establecida
+            CrearColumna(-n * distanciaSep);
+
         }
         
         //Lanzo la corrutina
         StartCoroutine("InstanciadorColumnas");
-
+  
     }
 
     //Función que crea una columna en una posición Random
+    //Lo hemos cambiado para que se le pueda pasar el valor en x o por defecto
     void CrearColumna(float posZ =0f)
     {
-        randomNumber = Random.Range(0f, 7f);
-        RandomPos = new Vector3(randomNumber, 0, posZ);
+        randomNumber = Random.Range(-5f, 5f);
+        RandomPosX = new Vector3(randomNumber, 0, posZ);
+
+        randomNumber = Random.Range(-2.5f, 2f);
+        RandomPosY = new Vector3(0, randomNumber, posZ);
         //print(RandomPos);
-        Vector3 FinalPos = InitPos.position + RandomPos;
+        Vector3 FinalPos = InitPos.position + RandomPosX + RandomPosY;
         Instantiate(Columna, FinalPos, Quaternion.identity);
     }
 
+
     //Corrutina que se ejecuta cada segundo
-    //NOTA: habría que cambiar ese segundo por una variable que dependa de la velocidad
+    //NOTA_1: habría que cambiar ese segundo por una variable que dependa de la velocidad
+    //NOTA_2: ahora el intervalo de la corrutina depende de la variable "speed" de la nave
+    //Aplicamos la formula "espacioEntreColumnas / velocidad"
     IEnumerator InstanciadorColumnas()
     {
         //Bucle infinito (poner esto es lo mismo que while(true){}
+      //  for (; ; )
+        {
+          //  CrearColumna();
+           // yield return new WaitForSeconds(1f);
+        }
+
+        //Bucle infinito (poener esto es lo mismo que while(true){}
         for (; ; )
         {
+
             CrearColumna();
-            yield return new WaitForSeconds(1f);
+            //float interval = 4 / spaceshipMove.speed;
+            // yield return new WaitForSeconds(interval);
+            float interval = distanciaSep / spaceshipMove.speed;
+            yield return new WaitForSeconds(interval);
         }
+
+        
 
     }
 

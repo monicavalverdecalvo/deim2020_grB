@@ -6,30 +6,23 @@ public class ObstacleCreator : MonoBehaviour
 {
     //---SCRIPT ASOCIADO AL EMPTY OBJECT QUE CREARÁ LOS OBSTÁCULOS--//
 
-    //array de mallas para cambiar el obstaculo
-    [SerializeField] Mesh[] mallasObstaculos;
-    //array de materiales
-    [SerializeField] Material[] mateObstaculos;
-   
-    //Variable que contendré el prefab con el obstáculo, su malla y su material
+    //Variable que contendré el prefab con el obstáculo
     [SerializeField] GameObject Columna;
-    private MeshFilter meshFilter;
-    private MeshRenderer meshRenderer;
+
+
     //Variable que tiene la posición del objeto de referencia
     [SerializeField] Transform InitPos;
 
     //Variables para generar columnas de forma random
-    private float randomNumberX;
-    private float randomNumberY;
-
+    private float randomNumber;
     Vector3 RandomPosX;
     Vector3 RandomPosY;
 
     //Distacia a la que se crean las columnas iniciales
-    //[SerializeField] float distaciaInicial = 0;
+    //[SerializeField] float distaciaInicial = 5;
 
     //Distancia entre columnas
-    float distanciaSep = 4f;
+    float distanciaSep = 9f;
 
 
     //Acceder a los componentes de la nave
@@ -40,11 +33,6 @@ public class ObstacleCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        meshRenderer = Columna.GetComponent<MeshRenderer>();
-        
-        //accedo al mesh filter del obstaculo
-        meshFilter = Columna.GetComponent<MeshFilter>();
-        
         //Acedo al script de la nave
         spaceshipMove = Nave.GetComponent<SpaceshipMove>();
         
@@ -68,19 +56,14 @@ public class ObstacleCreator : MonoBehaviour
     //Lo hemos cambiado para que se le pueda pasar el valor en x o por defecto
     void CrearColumna(float posZ =0f)
     {
-        randomNumberX = Random.Range(-5f, 5f);
-        randomNumberY = Random.Range(-2f, 2f);
-        RandomPosX = new Vector3(randomNumberX, randomNumberY, posZ);
+        randomNumber = Random.Range(-5f, 5f);
+        RandomPosX = new Vector3(randomNumber, 0, posZ);
 
-
-        int randomMesh = Random.Range(0, mallasObstaculos.Length);
-        meshFilter.mesh = mallasObstaculos[randomMesh];
-        meshRenderer.material = mateObstaculos[randomMesh];
+        randomNumber = Random.Range(-2.5f, 2f);
+        RandomPosY = new Vector3(0, randomNumber, posZ);
         //print(RandomPos);
         Vector3 FinalPos = InitPos.position + RandomPosX + RandomPosY;
         Instantiate(Columna, FinalPos, Quaternion.identity);
-
-
     }
 
 
@@ -90,7 +73,12 @@ public class ObstacleCreator : MonoBehaviour
     //Aplicamos la formula "espacioEntreColumnas / velocidad"
     IEnumerator InstanciadorColumnas()
     {
-       
+        //Bucle infinito (poner esto es lo mismo que while(true){}
+      //  for (; ; )
+        {
+          //  CrearColumna();
+           // yield return new WaitForSeconds(1f);
+        }
 
         //Bucle infinito (poener esto es lo mismo que while(true){}
         for (; ; )

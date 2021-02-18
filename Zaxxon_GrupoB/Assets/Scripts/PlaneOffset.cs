@@ -19,14 +19,14 @@ public class PlaneOffset : MonoBehaviour
         //Asignamos el componente renderer
         rend = GetComponent<Renderer>();
         //Obtenemos el script
-        GameObject InitEmpty = GameObject.Find("InitEmpty");
+        GameObject InitEmpty = GameObject.Find("initGame");
         initGame = InitEmpty.GetComponent<InitGame>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scrollSpeed = initGame.speed / 2; //Velocidad de desplazamiento
+        scrollSpeed = initGame.speed / 1; //Velocidad de desplazamiento
         //Distancia de desplazamiento, segun el tiempo de transc
         float offset = Time.time * scrollSpeed;
         //Vector de desplazamiento

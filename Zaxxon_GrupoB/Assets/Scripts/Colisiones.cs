@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Colisiones : MonoBehaviour
 {
+    private MeshRenderer myMesh;
 
-    [SerializeField] MeshRenderer myMesh;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        if(collision.gameObject.tag == "obstacle")
+        myMesh = GetComponent<MeshRenderer>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "obstacle")
         {
             myMesh.enabled = false;
+
+           
+            
         }
     }
 }

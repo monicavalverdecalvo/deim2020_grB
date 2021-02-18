@@ -61,9 +61,9 @@ public class SpaceshipMove : MonoBehaviour
 
 
         //Disparo el sonido
-        if(Input.GetKeyDown("space"))
+       //f(Input.GetKeyDown("space"))
         {
-            audioSource.Play();
+          //audioSource.Play();
         }
 
     }
